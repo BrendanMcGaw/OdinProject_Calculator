@@ -7,9 +7,10 @@
 // Super Simple product, could adapt into larger scale later. Inclusive of exponents, order of operations 
 // etc..
 const buttons = document.getElementsByClassName("buttons")
-let numberOne;
-let numberTwo;
-let displayValue;
+let numberOne = "";
+let numberTwo = "";
+let operator;
+let displayValue = "";
 let currentOperator;
 let textTest;
 const plus = '+';
@@ -18,9 +19,13 @@ const times = '*';
 const dividedBy = '/';
 let i = 0;
 
+// Simple way to calculate longer numbers as there is no OoP.
+// run the function. Then just run another function and allow the final answer to continue accumulating 
+// += etc.. 
+// until you hit clear button (Which I haven't made yet. heh.)
 
 addition = () => {
-    return numberOne + numberTwo;
+    return parseFloat(numberOne) + parseFloat(numberTwo);
 };
 
 
@@ -45,35 +50,35 @@ getOperator = () => {
 
 
 operate = () => {
-    if (11 == true) {
-        subtraction();
-    };
-    if (7 == true) {
-        multiplication();
-    };
-    if (3 == true) {
-        division();
-    };
+    if (operator = dividedBy) {
+        return numberOne / numberTwo;
+    }
 };
 
 
 for (let i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener("click", () => {
         currentOperator = i;
+        displayValue += buttons[i].innerHTML;
         console.log("You have pressed " + i);
-    })
-}
-
-switch (currentOperator) {
-    case 0: 
-        console.log("You pressed the right one, WELL DONE!");
-        textTest = "YOU DID  IT!"
-        
-        break;
-
-    default:
-        break;
-}
+        switch (currentOperator) {
+            case 0:
+                console.log("You pressed the right one, WELL DONE!");
+                if  (operator == undefined) {
+                    numberOne += "7";
+                    break;
+                }
+                numberTwo += "7";;
+                break;
+            case 3:
+                operator = "/"
+            case 14:
+                console.log(operate());
+            default:
+                break;
+        }
+    });
+};
 
 // buttons[3].addEventListener("click", () => {
 //     console.log("The pressed the division key");
