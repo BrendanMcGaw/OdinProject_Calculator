@@ -6,13 +6,14 @@
 
 // Super Simple product, could adapt into larger scale later. Inclusive of exponents, order of operations 
 // etc..
-const buttons = document.getElementsByClassName("buttons")
+const buttons = document.getElementsByClassName("buttons");
 let numberOne = "";
 let numberTwo = "";
 let operator;
 let displayValue = "";
 let currentOperator;
 let textTest;
+let result = "";
 const plus = '+';
 const minus = '-';
 const times = '*';
@@ -41,6 +42,7 @@ multiplication = () => {
 
 division = () => {
     return numberOne / numberTwo;
+
 };
 
 
@@ -51,7 +53,7 @@ getOperator = () => {
 
 operate = () => {
     if (operator = dividedBy) {
-        return numberOne / numberTwo;
+        return division();
     }
 };
 
@@ -74,6 +76,7 @@ for (let i = 0; i < buttons.length; i++) {
                 operator = "/"
             case 14:
                 console.log(operate());
+                result = operate();
             default:
                 break;
         }
