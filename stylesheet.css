@@ -86,7 +86,7 @@ body {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    font-size: 10vh;
+    font-size: 94px;
     padding-right: 10px;
     height: 75%;
     border-radius: 25px;
@@ -113,6 +113,7 @@ body {
     height: 20%;
     margin-left: 10px;
     margin-right: 10px;
+    color: white;
     width: 20%;
     background-color: rgb(5, 5, 5);
     font-size: 48px;
