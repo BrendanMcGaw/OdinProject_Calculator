@@ -16,7 +16,7 @@ let currentOperator;
 let textTest;
 let result;
 const plus = '+';
-const minus = '%';
+const minus = '-';
 const times = '*';
 const dividedBy = '/';
 let i = 0;
@@ -115,6 +115,11 @@ for (let i = 0; i < buttons.length; i++) {
                 break;
 
             case 3:
+                if (operator == plus || operator == minus || operator == dividedBy || operator == times ) {
+                    operate();
+                    numberOne = result;
+                    numberTwo = "";
+                }
                 displayValue.innerHTML += "/";
                 operator = dividedBy;
                 break;
@@ -150,6 +155,11 @@ for (let i = 0; i < buttons.length; i++) {
                 break;
                 
             case 7:
+                if (operator == plus || operator == minus || operator == dividedBy || operator == times ) {
+                    operate();
+                    numberOne = result;
+                    numberTwo = "";
+                }
                 displayValue.innerHTML += "*";
                 operator = times;
                 break;
@@ -185,6 +195,11 @@ for (let i = 0; i < buttons.length; i++) {
                 break;
 
             case 11:
+                if (operator == plus || operator == minus || operator == dividedBy || operator == times ) {
+                    operate();
+                    numberOne = result;
+                    numberTwo = "";
+                }
                 displayValue.innerHTML += "-";
                 console.log("This is the subtraction key");
                 operator = minus;
@@ -220,6 +235,11 @@ for (let i = 0; i < buttons.length; i++) {
                 break;
 
             case 15:
+                if (operator == plus || operator == minus || operator == dividedBy || operator == times ) {
+                    operate();
+                    numberOne = result;
+                    numberTwo = "";
+                }
                 displayValue.innerHTML += "+";
                 console.log("This is the addition key");
                 operator = plus;
