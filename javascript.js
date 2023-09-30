@@ -13,8 +13,7 @@ let numberTwo = "";
 let operator;
 let displayValue = document.getElementById("led-text");
 let ledScreen = document.getElementById("led-screen");
-let currentOperator;
-let textTest;
+let currentOperator; // Allows us to look through our switch statement and find the corresponding index number.
 let result;
 const plus = '+';
 const minus = '-';
@@ -22,39 +21,45 @@ const times = '*';
 const dividedBy = '/';
 let i = 0;
 
+
 // Simple way to calculate longer numbers as there is no OoP.
 // run the function. Then just run another function and allow the final answer to continue accumulating 
 // += etc.. 
 // until you hit clear button (Which I haven't made yet. heh.)
 
+// Adds the two numbers together, passing them as floats (had string issues with calculations)
+// displays the valueof the result on the led-screen.
 addition = () => {
     result = parseFloat(numberOne) + parseFloat(numberTwo);
     displayValue.innerHTML = result;
     return result;
 };
 
-
+// Minuses the two numbers from one another
+// displays the value of the result on the led-screen.
 subtraction = () => {
     result = numberOne-numberTwo;
     displayValue.innerHTML = result;
     return result;
 };
 
-
+// Multiplies the two numbers together.
+// displays the value of the result on the led-screen.
 multiplication = () => {
     result = numberOne * numberTwo;
     displayValue.innerHTML = result;
     return result;
 };
 
-
+// Divides the two numbers.
+// displays the value of the result on the led-screen.
 division = () => {
     result = numberOne / numberTwo;
     displayValue.innerHTML = result;
     return result;
 };
 
-
+// Runs the operation to check the operator present and then calculates accordingly.
 operate = () => {
     if (operator == plus) {
         return addition();
@@ -70,6 +75,7 @@ operate = () => {
     };
 };
 
+// This is a function to use for my clear button, to clear all calculations and start fresh.
 clearEverything = () =>  {
     numberOne = "";
     numberTwo = "";
@@ -78,10 +84,13 @@ clearEverything = () =>  {
     displayValue.innerHTML = "";
 }
 
+// This is my clear button event listener to clear everything when its clicked.
 clearButton.addEventListener("click", () => {
     clearEverything();
 });
 
+// This resets the values of the variables to calculate the next set of equations.
+// Sets numberOne as the result of the last equation to carry on calculations.
 clearValues = () => {
     numberOne = result;
     result = undefined;
@@ -90,19 +99,42 @@ clearValues = () => {
 }
 
 
+
+// BUG FIX ---------- If you press a number, after pressing equals, instead  of an operator
+// the number will be added to the result as part of the string. Making 25 (press 5) = 255. Whoops!
+// ***pressing a number when there is a result on the screen, should clear all values and start fresh***
+
+// BUG FIX ---------- Decimal numbers are a problem, need to Math.round to make it easier on the eyes!
+// BUG FIX ---------- Double pressing an operator should result in an ERROR. Not a NaN+ or NaN*.
+
+
+// This giant for loop, loops through the buttons arrray defined by the classname. It will loop through
+// the index numbers of the array and for the assigned buttons, add a new number or operator to the
+// equation based on what button was clicked.
 for (let i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener("click", () => {
+        // Checks to see if you're trying to be a maniac!
+        if (displayValue.innerHTML == "0/0") {
+            alert("What the FUCK do you think you're trying to do here?");
+            clearEverything();
+        };
         currentOperator = i;
         console.log("You have pressed " + i);
-        
+        //  Our switch statement ties a number in the array to a button on the calculator.
         switch (currentOperator) {
+            // In the case of 0. 0 in the array of buttons, is the #7 button on the calculator.
             case 0:
+                // We add "7" to the display-screen through innerHTML changes.
                 displayValue.innerHTML += "7";
                 console.log("You pressed the right one, WELL DONE!");
+                // Checks to make sure an operator isn't defined yet. If it isn't, adds the buttons number
+                // to the numberOne variable for our equation.
                 if  (operator == undefined) {
                     numberOne += "7";
                     break;
                 };
+                // If operator is in-fact already assigned, this will allow us to add the second number 
+                // of the equation.
                 numberTwo += "7";
                 break;
 
@@ -125,15 +157,19 @@ for (let i = 0; i < buttons.length; i++) {
                 };
                 numberTwo += "9";
                 break;
-
+            // In this case 3, happens to be an operator button.
             case 3:
+                // This if statement, checks to make sure an operator isn't currently in use. 
+                // So that if there is an operator in use, this will just run the equation that it already
+                // had and add the new operator of the case, to the next part of the equation.
+                // allowing the user to daisy chain a long equation together in 1 go, calculating on the  fly.
                 if (operator == plus || operator == minus || operator == dividedBy || operator == times ) {
                     operate();
                     numberOne = result;
                     numberTwo = "";
                 }
-                displayValue.innerHTML += "/";
-                operator = dividedBy;
+                displayValue.innerHTML += "/"; // displays / on the led-screen.
+                operator = dividedBy; // assigns the division sign to the operator variable.
                 break;
 
             case 4:
@@ -183,7 +219,7 @@ for (let i = 0; i < buttons.length; i++) {
                     numberOne += "1";
                     break;
                 };
-                numberOne += "1";
+                numberTwo += "1";
                 break;
 
             case 9:
@@ -238,12 +274,16 @@ for (let i = 0; i < buttons.length; i++) {
                 break;
 
             case 14:
+                // if numberOne is empty when they press the equal sign, it ERRORS out.
                 if (numberOne == ""){
                     displayValue.innerHTML = "ERROR.";
                     break;
                 };
                 console.log(operate());
+                // Runs the operate function. Calculating the equation.
                 operate();
+                // if result is not strictly undefined, it will clear all values to continue calculations.
+                // *NOTE*:: Will not clear numberOne as that is what we are carrying on from.
                 if (result !== undefined) {
                     clearValues();
                     break;

@@ -76,13 +76,15 @@ body {
 
 #display-screen-container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     border-top-right-radius: 18px;
     border-top-left-radius: 18px;
     background-color: grey;
     height: 25%;
-    background-color: #D7ACE5
+    background-color: #D7ACE5;
+    padding-top: 5px;
 }
 
 #led-screen {
@@ -95,15 +97,20 @@ body {
     border-radius: 25px;
     background-color: black;
     width: 91%;
-    overflow: hidden;
-    white-space: nowrap;
+    overflow: hidden; /* Added hidden overflow to stop characters from running out of screen */
+    white-space: nowrap; /* Strange experience with using - in the innerHTML string where it was creating line breaks. */
 }
 
-/* #led-text {
-    width:inherit;
-    text-orientation: inherit;
-    padding-right: 35px;
-} */
+#clear-screen {
+    margin-top: 8px;
+    align-self: center;
+    height: 30px;
+    width: 150px;
+    background-color: rgb(5, 5, 5);
+    font-size: 15px;
+    box-shadow: 2px 2px 0px rgb(31, 31, 31);
+    color: white;
+}
 
 #buttons-container {
     display: flex;
