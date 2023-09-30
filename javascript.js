@@ -13,7 +13,7 @@ let operator;
 let displayValue = "";
 let currentOperator;
 let textTest;
-let result = "";
+let result = undefined;
 const plus = '+';
 const minus = '-';
 const times = '*';
@@ -45,11 +45,6 @@ division = () => {
     displayValue = result;
     return result;
 };
-
-
-getOperator = () => {
-
-}
 
 
 operate = () => {
