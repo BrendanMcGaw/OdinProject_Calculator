@@ -107,6 +107,15 @@ clearValues = () => {
 // BUG FIX ---------- Decimal numbers are a problem, need to Math.round to make it easier on the eyes!
 // BUG FIX ---------- Double pressing an operator should result in an ERROR. Not a NaN+ or NaN*.
 
+// BUG FIX ---------- Multiple decimal points will feck this thing up. Disable button after decimal contained
+// within displayValue?
+
+// Additional add backspace button?
+
+// Add keyboard support?
+
+// Add transformative text, informaing about the keyboard support?
+// Maybe add keyboard hotkeys below for instruction?
 
 // This giant for loop, loops through the buttons arrray defined by the classname. It will loop through
 // the index numbers of the array and for the assigned buttons, add a new number or operator to the
