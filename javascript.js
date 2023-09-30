@@ -7,6 +7,7 @@
 // Super Simple product, could adapt into larger scale later. Inclusive of exponents, order of operations 
 // etc..
 const buttons = document.getElementsByClassName("buttons");
+const clearButton  = document.getElementById("clear-screen");
 let numberOne = "";
 let numberTwo = "";
 let operator;
@@ -69,6 +70,17 @@ operate = () => {
     };
 };
 
+clearEverything = () =>  {
+    numberOne = "";
+    numberTwo = "";
+    operator = undefined;
+    result = undefined;
+    displayValue.innerHTML = "";
+}
+
+clearButton.addEventListener("click", () => {
+    clearEverything();
+});
 
 clearValues = () => {
     numberOne = result;
@@ -226,6 +238,10 @@ for (let i = 0; i < buttons.length; i++) {
                 break;
 
             case 14:
+                if (numberOne == ""){
+                    displayValue.innerHTML = "ERROR.";
+                    break;
+                };
                 console.log(operate());
                 operate();
                 if (result !== undefined) {
