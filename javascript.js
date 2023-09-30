@@ -10,12 +10,13 @@ const buttons = document.getElementsByClassName("buttons");
 let numberOne = "";
 let numberTwo = "";
 let operator;
-let displayValue = "";
+let displayValue = document.getElementById("led-text");
+let ledScreen = document.getElementById("led-screen");
 let currentOperator;
 let textTest;
 let result;
 const plus = '+';
-const minus = '-';
+const minus = '%';
 const times = '*';
 const dividedBy = '/';
 let i = 0;
@@ -27,28 +28,28 @@ let i = 0;
 
 addition = () => {
     result = parseFloat(numberOne) + parseFloat(numberTwo);
-    displayValue = result;
+    displayValue.innerHTML = result;
     return result;
 };
 
 
 subtraction = () => {
     result = numberOne-numberTwo;
-    displayValue = result;
+    displayValue.innerHTML = result;
     return result;
 };
 
 
 multiplication = () => {
     result = numberOne * numberTwo;
-    displayValue = result;
+    displayValue.innerHTML = result;
     return result;
 };
 
 
 division = () => {
     result = numberOne / numberTwo;
-    displayValue = result;
+    displayValue.innerHTML = result;
     return result;
 };
 
@@ -69,14 +70,22 @@ operate = () => {
 };
 
 
+clearValues = () => {
+    numberOne = result;
+    result = undefined;
+    numberTwo = "";
+    operator = undefined;
+}
+
+
 for (let i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener("click", () => {
         currentOperator = i;
-        displayValue += buttons[i].innerHTML;
         console.log("You have pressed " + i);
         
         switch (currentOperator) {
             case 0:
+                displayValue.innerHTML += "7";
                 console.log("You pressed the right one, WELL DONE!");
                 if  (operator == undefined) {
                     numberOne += "7";
@@ -86,6 +95,7 @@ for (let i = 0; i < buttons.length; i++) {
                 break;
 
             case 1:
+                displayValue.innerHTML += "8";
                 console.log("This is the number 8 key");
                 if (operator == undefined) {
                     numberOne += "8";
@@ -95,6 +105,7 @@ for (let i = 0; i < buttons.length; i++) {
                 break;
 
             case 2:
+                displayValue.innerHTML += "9";
                 console.log("This is the number 9 key");
                 if (operator == undefined) {
                     numberOne += "9";
@@ -104,10 +115,12 @@ for (let i = 0; i < buttons.length; i++) {
                 break;
 
             case 3:
+                displayValue.innerHTML += "/";
                 operator = dividedBy;
                 break;
 
             case 4:
+                displayValue.innerHTML += "4";
                 console.log("This is the number 4 key");
                 if (operator == undefined) {
                     numberOne += "4";
@@ -117,6 +130,7 @@ for (let i = 0; i < buttons.length; i++) {
                 break;
 
             case 5:
+                displayValue.innerHTML += "5";
                 console.log("This is the number 5 key");
                 if (operator == undefined) {
                     numberOne += "5";
@@ -126,6 +140,7 @@ for (let i = 0; i < buttons.length; i++) {
                 break;
 
             case 6:
+                displayValue.innerHTML += "6";
                 console.log("This is the number 6 key");
                 if (operator == undefined) {
                     numberOne += "6";
@@ -135,10 +150,12 @@ for (let i = 0; i < buttons.length; i++) {
                 break;
                 
             case 7:
+                displayValue.innerHTML += "*";
                 operator = times;
                 break;
 
             case 8:
+                displayValue.innerHTML += "1";
                 console.log("This is the 1 key");
                 if (operator == undefined) {
                     numberOne += "1";
@@ -148,6 +165,7 @@ for (let i = 0; i < buttons.length; i++) {
                 break;
 
             case 9:
+                displayValue.innerHTML += "2";
                 console.log("this is the number 2 key");
                 if (operator == undefined) {
                     numberOne += "2";
@@ -157,6 +175,7 @@ for (let i = 0; i < buttons.length; i++) {
                 break;
 
             case 10:
+                displayValue.innerHTML += "3";
                 console.log("This is the number 3 key");
                 if (operator == undefined) {
                     numberOne += "3";
@@ -165,12 +184,14 @@ for (let i = 0; i < buttons.length; i++) {
                 numberTwo += "3";
                 break;
 
-            case 11: 
+            case 11:
+                displayValue.innerHTML += "-";
                 console.log("This is the subtraction key");
                 operator = minus;
                 break;
 
             case 12:
+                displayValue.innerHTML += "0";
                 console.log("This is the number 0 key");
                 if (operator == undefined) {
                     numberOne += "0";
@@ -180,6 +201,7 @@ for (let i = 0; i < buttons.length; i++) {
                 break;
 
             case 13:
+                displayValue.innerHTML += ".";
                 console.log("This is the decimal key");
                 if (operator == undefined) {
                     numberOne += ".";
@@ -192,14 +214,13 @@ for (let i = 0; i < buttons.length; i++) {
                 console.log(operate());
                 operate();
                 if (result !== undefined) {
-                    numberOne = result;
-                    result = undefined;
-                    numberTwo = "";
-                    operator = undefined;
+                    clearValues();
                     break;
                 };
+                break;
 
             case 15:
+                displayValue.innerHTML += "+";
                 console.log("This is the addition key");
                 operator = plus;
                 break;
