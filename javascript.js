@@ -70,10 +70,45 @@ for (let i = 0; i < buttons.length; i++) {
                     numberOne += "7";
                     break;
                 }
-                numberTwo += "7";;
+                numberTwo += "7";
+                break;
+            case 1:
+                console.log("This is the number 8 key");
+                if (operator == undefined) {
+                    numberOne += "8";
+                    break;
+                }
+                numberTwo += "8";
+                break;
+            case 2:
+                console.log("This is the number 9 key");
+                if (operator == undefined) {
+                    numberOne += "9";
+                    break;
+                }
+                numberTwo += "9";
                 break;
             case 3:
                 operator = "/"
+                break;
+            case 4:
+                console.log("This is the number 4 key");
+                if (operator == undefined) {
+                    numberOne += "4";
+                    break;
+                }
+                numberTwo += "4";
+                break;
+            case 5:
+                console.log("This is the number 5 key");
+                if (operator == undefined) {
+                    numberOne += "5";
+                    break;
+                }
+                numberTwo += "5";
+                break;
+            case 6:
+                console.log("This is the number 6 key");
             case 14:
                 console.log(operate());
                 result = operate();
